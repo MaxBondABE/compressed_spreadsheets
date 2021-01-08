@@ -37,7 +37,7 @@ project directory; it has no external requirements.
 
 ## From PyPI
 
-Coming soon!
+`pip install compressed-spreadsheets`
 
 # Examples
 
