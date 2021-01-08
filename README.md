@@ -30,14 +30,15 @@ The library does not behave well on sheets with 0 columns.
 
 # Installation
 
+## From PyPI
+
+`pip install compressed-spreadsheets`
+
 ## From GitHub
 
 Simply download the project and place `compressed_spreadsheets.py` into your
 project directory; it has no external requirements.
 
-## From PyPI
-
-`pip install compressed-spreadsheets`
 
 # Examples
 
