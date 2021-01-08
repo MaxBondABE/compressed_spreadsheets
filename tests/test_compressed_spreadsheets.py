@@ -60,6 +60,19 @@ def test_writing_and_reading_many_rows(rows):
         row = {k: v for k,v in zip(fieldnames, row)}
         assert next(reader) == row
 
+@given(st.lists(st.lists(st.text(), min_size=5, max_size=5)))
+def test_reader_is_iterable(rows):
+    f = BytesIO()
+    fieldnames = ("1", "2", "3", "4", "5")
+    writer = CompressedDictWriter(f, fieldnames, write_header=True)
+    for row in rows:
+        row = {k: v for k,v in zip(fieldnames, row)}
+        writer.writerow(row)
+
+    f.seek(0)
+    reader = CompressedDictReader(f)
+    assert list(reader) == [{k: v for k,v in zip(fieldnames, row)} for row in rows]
+
 def test_writing_and_reading_with_casting():
     f = BytesIO()
     row = {"a": 10}

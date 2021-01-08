@@ -203,5 +203,13 @@ class CompressedDictReader(CompressedCSVFile):
         """
         Retrieve the next row in the CSV file.
         """
-        return self.load_row(self.decode_row(self.compressed_file.readline()))
+        line = self.compressed_file.readline()
+        if not line:
+            raise StopIteration()
+        return self.load_row(self.decode_row(line))
+
+    def __iter__(self):
+        return self
+
+__version__ = "1.0.1"
 
